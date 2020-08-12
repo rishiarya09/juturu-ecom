@@ -34,10 +34,7 @@
 		                    <img src="images/juturu_digitals.jpeg" alt="First slide">
 		                  </div>
 		                  <div class="item">
-		                    <img src="images/juturu_electronics.jpeg" alt="Second slide">
-		                  </div>
-		                  <div class="item">
-		                    <img src="images/banner3.png" alt="Third slide">
+		                    <img src="images/Juturu_electronics.jpeg" alt="Second slide">
 		                  </div>
 		                </div>
 		                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
