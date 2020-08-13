@@ -7,7 +7,7 @@
 		'version'  => '2006-03-01',
 		'region'   => 'us-east-1',
 	]);
-	$bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var is found in env!');
+	$bucket = getenv('S3_BUCKET_NAME')?: die('No "S3_BUCKET" config var is found in env!');
 
 	if(isset($_POST['add'])){
 		$name = $_POST['name'];
