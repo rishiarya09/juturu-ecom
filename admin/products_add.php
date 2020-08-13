@@ -7,8 +7,8 @@
 		'version'  => '2006-03-01',
 		'region'   => 'us-east-1',
 	]);
-	$bucket = getenv('S3_BUCKET_NAME')?: die('No "S3_BUCKET" config var is found in env!');
-
+	$bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var is found in env!');
+	// $bucket = 'juturu';
 	if(isset($_POST['add'])){
 		$name = $_POST['name'];
 		$slug = slugify($name);
@@ -34,7 +34,8 @@
 				$ext = pathinfo($filename, PATHINFO_EXTENSION);
 				$new_filename = $slug.$i.'.'.$ext;
 				// move_uploaded_file($_FILES['photo']['tmp_name'][$i], '../images/'.$new_filename);	
-				$upload = $s3->upload($bucket, $_FILES['photo']['tmp_name'][$i], fopen($_FILES['photo']['new_filename'], 'rb'), 'public-read');
+				$file = $_FILES['photo']['tmp_name'][$i];
+				$upload = $s3->upload($bucket, $file, fopen($file, 'rb'), 'public-read');
 				$image_url = $upload->get('ObjectURL');
 
 			}
