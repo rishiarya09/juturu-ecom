@@ -3,6 +3,6 @@
       <div class="pull-right hidden-xs">
         <b>All rights reserved</b>
       </div>
-      <strong>Copyright &copy; 2020 Brought to You By Juturu Agencies</a></strong>
+      <strong>Copyright &copy; 2020 By Juturu Agencies</a></strong>
     </div>
 </footer>

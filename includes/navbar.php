@@ -2,7 +2,9 @@
   <nav class="navbar navbar-static-top">
     <div class="container">
       <div class="navbar-header">
+      <img id="logo" src="images/juturu.png" height="30" width="30">
         <a href="index.php" class="navbar-brand"><b>JUTURU</b>Electronics</a>
+        
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
           <i class="fa fa-bars"></i>
         </button>
@@ -13,7 +15,6 @@
         <ul class="nav navbar-nav">
           <li><a href="index.php">HOME</a></li>
           <!-- <li><a href="">ABOUT US</a></li> -->
-          <li><a href="">CONTACT US</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">CATEGORY <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">

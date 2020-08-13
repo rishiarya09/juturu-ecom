@@ -15,7 +15,7 @@
     
  $(document).ready(function(){
  swal({
- title: 'subscribe for out updates',
+ title: 'subscribe for our updates',
  input: 'email',
  showCancelButton: true,
  confirmButtonText: 'Submit',

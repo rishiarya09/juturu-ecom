@@ -117,7 +117,7 @@
                           <tr>
                             <td>".$row['name']."</td><td>";
                         foreach($stmt1 as $row1){
-                          $image = (!empty($row1['image_name'])) ? '../images/'.$row1['image_name'] : '../images/noimage.jpg';
+                          $image = (!empty($row1['image_name'])) ? $row1['image_name'] : '../images/noimage.jpg';
                           if(!empty($row1)){
                           echo "
                           <img src='".$image."' height='30px' width='30px'>
