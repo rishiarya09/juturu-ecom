@@ -35,8 +35,15 @@
 				$new_filename = $slug.$i.'.'.$ext;
 				// move_uploaded_file($_FILES['photo']['tmp_name'][$i], '../images/'.$new_filename);	
 				$file = $_FILES['photo']['tmp_name'][$i];
-				$upload = $s3->upload($bucket, $file, fopen($file, 'rb'), 'public-read');
-				$image_url = $upload->get('ObjectURL');
+				try {
+					$upload = $s3->upload($bucket, $file, fopen($file, 'rb'), 'public-read');
+					$image_url = $upload->get('ObjectURL');
+				}
+				catch(Exception $e){
+					echo $e->getMessage();
+
+				}
+				
 
 			}
 			else{
