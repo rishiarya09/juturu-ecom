@@ -102,7 +102,7 @@
 						</div>	
 							<?php
 						}else{?>
-							<img src="<?php echo 'images/noimage.jpg'; ?>" width="100%" class="zoom" data-magnify-src="images/large-<?php echo $i['image_name']; ?>">
+							<img src="<?php echo 'images/noimage.jpg'; ?>" width="100%" class="zoom" data-magnify-src="large-<?php echo $i['image_name']; ?>">
 							<?php
 
 							}
