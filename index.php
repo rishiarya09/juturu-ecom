@@ -8,11 +8,12 @@
 	margin: 5px 10px;
 	float: left; 
 	background-color: white;
+	width: 167px;
   
 }
 
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+.cards:hover {
+  box-shadow: 0 12px 24px 0 rgba(0,0,0,0.2);
 }
 
 .containers {
@@ -54,13 +55,26 @@
 		                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 		                  <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
 		                  <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+						  <li data-target="#carousel-example-generic" data-slide-to="3" class=""></li>
+		                  <li data-target="#carousel-example-generic" data-slide-to="4" class=""></li>
+		                  <li data-target="#carousel-example-generic" data-slide-to="5" class=""></li>
+
 		                </ol>
 		                <div class="carousel-inner">
 		                  <div class="item active">
-		                    <img src="images/juturu_digitals.jpeg" alt="First slide">
+		                    <img src="images/Independence_day.jpg" alt="First slide">
+		                  </div>
+						  <div class="item">
+		                    <img src="images/Live-demo.jpg" alt="Fourth slide">
 		                  </div>
 		                  <div class="item">
-		                    <img src="images/Juturu_electronics.jpeg" alt="Second slide">
+		                    <img src="images/Juturu_electronics.jpg" alt="Second slide">
+		                  </div>
+						  <div class="item">
+		                    <img src="images/Kdp_branch.jpg" alt="Third slide">
+		                  </div>
+						  <div class="item">
+		                    <img src="images/Pdtr-branches.jpg" alt="Fifth slide">
 		                  </div>
 		                </div>
 		                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">

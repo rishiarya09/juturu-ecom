@@ -21,7 +21,9 @@
 	  	</div>
 	</div>
 </div>
-
+<div class="row">
+<iframe id="ytplayer" type="text/html" width="285" height="280" src="https://www.youtube.com/embed/ZXd5RWLJFT4?start=2?autoplay=1" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" frameborder="0" allowfullscreen></iframe>
+</div>
 <div class="row">
 	<div class="box box-solid">
 	  	<div class="box-header with-border">
@@ -39,7 +41,7 @@
 		    </form>
 	  	</div>
 	</div>
-</div><iframe width="285" height="315" src="https://www.youtube.com/embed/4sDiXLXCG9Y?start=52" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 <div class="row">
 	<div class='box box-solid'>
 	  	<div class='box-header with-border'>

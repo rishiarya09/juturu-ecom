@@ -112,7 +112,7 @@
 							            </span> -->
 							            <input type="hidden" value="<?php echo $product['prodid']; ?>" name="id">
 									</div>
-									<button type="submit" class="btn btn-primary btn-lg btn-flat"><i class="fa fa-file-video-o"></i> View Demo</button>
+									<!-- <button type="submit" class="btn btn-primary btn-lg btn-flat"><i class="fa fa-file-video-o"></i> View Demo</button> -->
 <br>
 									<div>
 										<p style="font-weight: bold;">For better price, Please contact us</p>
