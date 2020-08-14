@@ -54,7 +54,7 @@ try {
 				// move_uploaded_file($_FILES['photo']['tmp_name'][$i], '../images/'.$new_filename);	
 				// $file = $_FILES['photo']['tmp_name'][$i];
 				$keyName = 'test_example/' . basename($_FILES["photo"]['name'][$i]);
-				$image_url = 'https://'. $bucketName .'s3.us-east-2.amazonaws.com/' . $keyName;
+				$image_url = 'https://'. $bucketName .'.s3.us-east-2.amazonaws.com/' . $keyName;
 
 	// Add it to S3
 	try {
