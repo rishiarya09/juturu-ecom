@@ -39,8 +39,7 @@
 		    </form>
 	  	</div>
 	</div>
-</div>
-
+</div><iframe width="285" height="315" src="https://www.youtube.com/embed/4sDiXLXCG9Y?start=52" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <div class="row">
 	<div class='box box-solid'>
 	  	<div class='box-header with-border'>

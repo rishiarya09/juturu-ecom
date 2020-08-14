@@ -42,10 +42,10 @@
 							foreach ($stmt as $row) {
 								$stmt1 = $conn->prepare("SELECT * FROM product_images WHERE product_id = :pid");
 								$stmt1->execute(['pid' => $row['id']]);
+								$inc = ($inc == 3) ? 1 : $inc + 1;
 								foreach($stmt1 as $row1){
 									$image = (!empty($row1['image_name'])) ? $row1['image_name'] : 'images/noimage.jpg';
 								}
-						    	$inc = ($inc == 3) ? 1 : $inc + 1;
 	       						if($inc == 1) echo "<div class='row'>";
 	       						echo "
 	       							<div class='col-sm-4'>

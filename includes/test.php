@@ -57,3 +57,46 @@ $(document).ready(function(){
 </div>     
 </body>
 </html>
+
+
+<?php foreach($image as $i){
+							if(!empty($i)){?>
+						<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+						<?php
+						$count = count($image);
+						for($in = 1; $in<=$count; $in++){?>
+							<li data-target="#myCarousel" data-slide-to="<?php echo $in?>" class="active"></li>
+
+							<?php
+						}
+						?>
+						</ol>
+						<div class="carousel-inner">
+						<?php 
+						foreach($image as $im){
+							$photo = $im;?>
+							<div class="item">
+							<span>hello</span>
+								<img src="<?php echo $photo ?>" alt="<?php echo $im ?>" style="width:100%;"  data-magnify-src="images/large-<?php echo $im; ?>">
+
+							</div>
+						<?php } ?>
+						</div>
+						<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+						</div>	
+							<?php
+						}else{?>
+							<img src="<?php echo 'images/noimage.jpg'; ?>" width="100%" class="zoom" data-magnify-src="large-<?php echo $i['image_name']; ?>">
+							<?php
+
+							}
+
+						} ?>
