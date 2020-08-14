@@ -2,9 +2,9 @@
 
 Class Database{
  
-	private $server = "mysql:host=us-cdbr-east-02.cleardb.com;dbname=heroku_c5fe37ab198fd02";
-	private $username = "bef9c9a9cc2782";
-	private $password = "f5bfc2d1";
+	private $server = "mysql:host=us-cdbr-east-02.cleardb.com;dbname=heroku_db1056c4d9ac59f";
+	private $username = "b5bf95be26c72f";
+	private $password = "b0d606da";
 	private $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,);
 	protected $conn;
  	
