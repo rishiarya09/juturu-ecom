@@ -1,12 +1,12 @@
 <?php
 	include 'includes/session.php';
 	include 'includes/slugify.php';
-	require '../vendor/autoload.php';
+	// require '../vendor/autoload.php';
 
-	use Aws\S3\S3Client;
-	use AWS\S3\S3Exception\S3Eception;
+	// use Aws\S3\S3Client;
+	// use AWS\S3\S3Exception\S3Eception;
 
-	include('config_s3.php');
+	// include('config_s3.php');
 
 	// $s3 = new Aws\S3\S3Client([
 	// 	'version'  => '2006-03-01',
@@ -38,8 +38,8 @@
 			if(!empty($filename)){
 				$ext = pathinfo($filename, PATHINFO_EXTENSION);
 				$new_filename = $slug.$i.'.'.$ext;
-				// move_uploaded_file($_FILES['photo']['tmp_name'][$i], '../images/'.$new_filename);	
-				$file = $_FILES['photo']['tmp_name'][$i];
+				move_uploaded_file($_FILES['photo']['tmp_name'][$i], '../images/'.$new_filename);	
+				// $file = $_FILES['photo']['tmp_name'][$i];
 				// try {
 				// 	$upload = $s3->upload($bucket, $file, fopen($file, 'rb'), 'public-read');
 				// 	$image_url = $upload->get('ObjectURL');
@@ -48,18 +48,18 @@
 				// 	echo $e->getMessage();
 
 				// }
-				try{
-					$client->putObject(array(
-						'Bucket'=>$bucket,
-						'Key' => $new_filename,
-						'SourceFile' => $file,
-						'StorageClass' => 'REDUCED_REDUNDANCY'
-					));
-				$message = "s3 uPLOAD sUCCESSFUL.";
-				$image_url = 'https://'.$bucket.'s3.amazonaws.com/'.$new_filename;
-				}catch(S3Exception $e){
-					echo $e->getMessage();
-				}
+				// try{
+				// 	$client->putObject(array(
+				// 		'Bucket'=>$bucket,
+				// 		'Key' => $new_filename,
+				// 		'SourceFile' => $file,
+				// 		'StorageClass' => 'REDUCED_REDUNDANCY'
+				// 	));
+				// $message = "s3 uPLOAD sUCCESSFUL.";
+				// $image_url = 'https://'.$bucket.'s3.amazonaws.com/'.$new_filename;
+				// }catch(S3Exception $e){
+				// 	echo $e->getMessage();
+				// }
 				
 
 			}
@@ -68,7 +68,7 @@
 			}
 			try{
 				$stmt1 = $conn->prepare("INSERT INTO product_images (product_id, image_name) VALUES (:product_id, :image_name)");
-				$stmt1-> execute(['product_id'=>$prod_id, 'image_name' => $image_url]);
+				$stmt1-> execute(['product_id'=>$prod_id, 'image_name' => $new_filename]);
 				$SESSION['success'] = 'Image uploaded Successfully';
 			}
 			catch(PDOException $e){
