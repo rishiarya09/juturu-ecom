@@ -3,11 +3,16 @@
 	include 'includes/slugify.php';
 	require '../vendor/autoload.php';
 
-	$s3 = new Aws\S3\S3Client([
-		'version'  => '2006-03-01',
-		'region'   => 'us-east-1',
-	]);
-	$bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var is found in env!');
+	use Aws\S3\S3Client;
+	use AWS\S3\S3Exception\S3Eception;
+
+	include('config_s3.php');
+
+	// $s3 = new Aws\S3\S3Client([
+	// 	'version'  => '2006-03-01',
+	// 	'region'   => 'us-east-1',
+	// ]);
+	// $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var is found in env!');
 	// $bucket = 'juturu';
 	if(isset($_POST['add'])){
 		$name = $_POST['name'];
@@ -35,13 +40,25 @@
 				$new_filename = $slug.$i.'.'.$ext;
 				// move_uploaded_file($_FILES['photo']['tmp_name'][$i], '../images/'.$new_filename);	
 				$file = $_FILES['photo']['tmp_name'][$i];
-				try {
-					$upload = $s3->upload($bucket, $file, fopen($file, 'rb'), 'public-read');
-					$image_url = $upload->get('ObjectURL');
-				}
-				catch(Exception $e){
-					echo $e->getMessage();
+				// try {
+				// 	$upload = $s3->upload($bucket, $file, fopen($file, 'rb'), 'public-read');
+				// 	$image_url = $upload->get('ObjectURL');
+				// }
+				// catch(Exception $e){
+				// 	echo $e->getMessage();
 
+				// }
+				try{
+					$client->putObject(array(
+						'Bucket'=>$bucket,
+						'Key' => $new_filename,
+						'SourceFile' => $file,
+						'StorageClass' => 'REDUCED_REDUNDANCY'
+					));
+				$message = "s3 uPLOAD sUCCESSFUL.";
+				$image_url = 'https://'.$bucket.'s3.amazonaws.com/'.$new_filename;
+				}catch(S3Exception $e){
+					echo $e->getMessage();
 				}
 				
 
