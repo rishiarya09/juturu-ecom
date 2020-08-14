@@ -6,19 +6,27 @@
 	use Aws\S3\S3Client;
 	use AWS\S3\S3Exception\S3Eception;
 
-	// include('config_s3.php');
-	$api_key = getenv("AWS_ACCESS_KEY_ID");
-	$secret_key =getenv("AWS_SECRET_ACCESS_KEY");
-	$s3 = new S3Client([
-		'version'  => 'latest',
-		'region'   => 'us-east-2',
-		'credentials' => [
-			'key' => $api_key,
-			'secret' => $secret_key
-		]
-	]);
-	// $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var is found in env!');
-	$bucket = 'juturu';
+	$bucketName = getenv("S3_BUCKET");
+$IAM_KEY = getenv("AWS_ACCESS_KEY_ID");
+$IAM_SECRET = getenv("AWS_SECRET_ACCESS_KEY");
+try {
+    // You may need to change the region. It will say in the URL when the bucket is open
+    // and on creation.
+    $s3 = S3Client::factory(
+        array(
+            'credentials' => array(
+                'key' => $IAM_KEY,
+                'secret' => $IAM_SECRET
+            ),
+            'version' => 'latest',
+            'region'  => 'us-east-2'
+        )
+    );
+} catch (Exception $e) {
+    // We use a die, so if this fails. It stops here. Typically this is a REST call so this would
+    // return a json object.
+    die("Error: " . $e->getMessage());
+}
 	if(isset($_POST['add'])){
 		$name = $_POST['name'];
 		$slug = slugify($name);
@@ -43,32 +51,30 @@
 			if(!empty($filename)){
 				$ext = pathinfo($filename, PATHINFO_EXTENSION);
 				$new_filename = $slug.$i.'.'.$ext;
-				move_uploaded_file($_FILES['photo']['tmp_name'][$i], '../images/'.$new_filename);	
-				$file = $_FILES['photo']['tmp_name'][$i];
-				// try {
-				// 	$upload = $s3->upload($bucket, $file, fopen($file, 'rb'), 'public-read');
-				// 	$image_url = $upload->get('ObjectURL');
-				// }
-				// catch(Exception $e){
-				// 	echo $e->getMessage();
+				// move_uploaded_file($_FILES['photo']['tmp_name'][$i], '../images/'.$new_filename);	
+				// $file = $_FILES['photo']['tmp_name'][$i];
+				$keyName = 'test_example/' . basename($_FILES["photo"]['name'][$i]);
+				$pathInS3 = 'https://s3.us-east-2.amazonaws.com/' . $bucketName . '/' . $keyName;
 
-				// }
-				try{
-					$result = $s3->putObject(array(
-						'Bucket'=>$bucket,
-						'Key' => $new_filename,
-						// 'Body' => fopen($file, 'r'),
-						'SourceFile' => $file,
-						// 'StorageClass' => 'REDUCED_REDUNDANCY'
-						'ACL' => 'public-read'
-					));
-					$image_url =  $result->get('ObjectURL');
-					echo $image_url;
-				// $message = "s3 uPLOAD sUCCESSFUL.";
-				// $image_url = 'https://'.$bucket.'s3.amazonaws.com/'.$new_filename;
-				}catch(S3Exception $e){
-					echo $e->getMessage();
-				}
+	// Add it to S3
+	try {
+		// Uploaded:
+		$file = $_FILES["photo"]['tmp_name'][$i];
+
+		$s3->putObject(
+			array(
+				'Bucket'=>$bucketName,
+				'Key' =>  $keyName,
+				'SourceFile' => $file,
+				'StorageClass' => 'REDUCED_REDUNDANCY'
+			)
+		);
+
+	} catch (S3Exception $e) {
+		die('Error:' . $e->getMessage());
+	}
+
+	echo done;
 				
 
 			}
