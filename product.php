@@ -84,8 +84,8 @@
 						<div class="carousel-inner">
 						<?php 
 						foreach($image as $im){
-							$photo = 'images/'.$im;?>
-							<div class=\"item\">
+							$photo = $im;?>
+							<div class="item">
 								<img src="<?php echo $photo ?>" alt="<?php echo $im ?>" style="width:100%;">
 
 							</div>

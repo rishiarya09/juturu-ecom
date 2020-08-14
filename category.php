@@ -43,7 +43,7 @@
 								$stmt1 = $conn->prepare("SELECT * FROM product_images WHERE product_id = :pid");
 								$stmt1->execute(['pid' => $row['id']]);
 								foreach($stmt1 as $row1){
-									$image = (!empty($row['image_name'])) ? $row['image_name'] : 'images/noimage.jpg';
+									$image = (!empty($row1['image_name'])) ? $row1['image_name'] : 'images/noimage.jpg';
 								}
 						    	$inc = ($inc == 3) ? 1 : $inc + 1;
 	       						if($inc == 1) echo "<div class='row'>";
